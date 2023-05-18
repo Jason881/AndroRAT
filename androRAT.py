@@ -11,7 +11,7 @@ except ImportError as e:
     print(stdOutput("error")+"\033[1mpyngrok not found");
     print(stdOutput("info")+"\033[1mRun pip3 install -r requirements.txt")
     exit()
-    
+
 clearDirec()
 
 #                     _           _____         _______
@@ -51,14 +51,13 @@ if args.build:
         ip = socket.gethostbyname(domain)
         print(stdOutput("info")+"\033[1mTunnel_IP: %s PORT: %s"%(ip,port))
         build(ip,port,args.output,True,port_,icon)
+    elif args.ip and args.port:
+        build(args.ip,port_,args.output,False,None,icon)
     else:
-        if args.ip and args.port:
-            build(args.ip,port_,args.output,False,None,icon)
-        else:
-            print(stdOutput("error")+"\033[1mArguments Missing")
+        print(stdOutput("error")+"\033[1mArguments Missing")
 
 if args.shell:
     if args.ip and args.port:
-        get_shell(args.ip,args.port) 
+        get_shell(args.ip,args.port)
     else:
         print(stdOutput("error")+"\033[1mArguments Missing")
